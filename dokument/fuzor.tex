@@ -1,0 +1,72 @@
+\documentclass[onecolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{amsmath}  % równania
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{physics2}  % pochodne, macierze itp
+\usephysicsmodule{ab}
+\usephysicsmodule{diagmat}
+\usephysicsmodule{xmat}
+\usephysicsmodule{nabla.legacy}
+\usephysicsmodule{op.legacy}
+\makeatletter
+\newcommand\vb{\@ifstar\boldsymbol\mathbf}
+\newcommand\va[1]{\@ifstar{\vec{#1}}{\vec{\mathrm{#1}}}}
+\newcommand\vu[1]{%
+\@ifstar{\hat{\boldsymbol{#1}}}{\hat{\mathbf{#1}}}}
+\makeatother
+\usepackage{fixdif, derivative}  % pochodne
+
+\newcommand{\inv}[1]{\frac{1}{#1}}  % odwrotność
+
+\begin{document}
+\section{Podstawy elektrodynamiczne}
+\begin{center}
+Równania Maxwella
+\end{center}
+\begin{align*}
+\div\vb{E} &= \inv{\varepsilon_{0}}\rho & \curl\vb{E} &= -\pdv{\vb{B}}{t} \\
+\div\vb{B} &= 0 & \curl\vb{B} &= \mu_{0}\vb{j} + \mu_{0}\varepsilon_{0}\pdv{\vb{E}}{t}
+\end{align*}
+Z równania \(\div\vb{B} = 0\) możemy wprowadzić potencjał wektorowy \(\vb{A}\), taki że:
+\begin{equation*}
+\vb{B} = \curl\vb{A}.
+\end{equation*}
+Po podstawieniu tego do równania \(\curl\vb{E} = -\pdv{\vb{B}}{t}\) i manipulacji otrzymujemy 
+\begin{equation*}
+\vb{E} = -\grad{V} - \pdv{\vb{A}}{t},
+\end{equation*}
+gdzie \(V\) jest potencjałem skalarnym. \par
+Podstawiając te potencjały do wzorów \(\div\vb{E} = \inv{\varepsilon_{0}}\rho\) oraz \(\curl\vb{B} = \mu_{0}\vb{j} + \mu_{0}\varepsilon_{0}\pdv{\vb{E}}{t}\):
+\begin{gather*}
+\laplacian V + \pdv{}{t}\pab{\div\vb{A}} = -\inv{\varepsilon_{0}}\rho \\
+\laplacian \vb{A} - \grad\pab{\div\vb{A}} - \mu_{0}\varepsilon_{0}\div\pdv{V}{t} - \mu_{0}\varepsilon_{0}\pdv[order=2]{\vb{A}}{t} = -\mu_{0}\vb{j}.
+\end{gather*}
+Zapisując powyższe wzory w bardziej symetrycznej formie otrzymujemy:
+\begin{gather*}
+\pab{\laplacian V - \mu_{0}\varepsilon_{0}\pdv[order=2]{V}{t}} + \pdv{}{t}\pab{\div\vb{A} + \mu_{0}\varepsilon_{0}\pdv{V}{t}} = -\inv{\varepsilon_{0}}\rho \\
+\pab{\laplacian \vb{A} - \mu_{0}\varepsilon_{0}\pdv[order=2]{\vb{A}}{t}} - \div\pab{\div\vb{A} + \mu_{0}\varepsilon_{0}\pdv{V}{t}} = -\mu_{0}\vb{j}.
+\end{gather*}
+Wybierając cechowanie Lorentza
+\begin{equation*}
+\div\vb{A} + \mu_{0}\varepsilon_{0}\pdv{V}{t} = 0,
+\end{equation*}
+mamy:
+\begin{gather*}
+\laplacian V - \mu_{0}\varepsilon_{0}\pdv[order=2]{V}{t} = -\inv{\varepsilon_{0}}\rho \\
+\laplacian \vb{A} - \mu_{0}\varepsilon_{0}\pdv[order=2]{\vb{A}}{t} = -\mu_{0}\vb{j}.
+\end{gather*}
+\section{Układ symetryczny cylindrycznie}
+%\subsection{Cząstka w polu elektrostatycznym}
+%\subsection{Wiele cząstek bez wzajemnych oddziaływań}
+%\subsection{Wiele cząstek ze wzajemnymi oddziaływaniami}
+
+\section{Układ symetryczny sferycznie}
+\subsection{Cząstka w polu elektrostatycznym}
+
+%\subsection{Wiele cząstek bez wzajemnych oddziaływań}
+%\subsection{Wiele cząstek ze wzajemnymi oddziaływaniami}
+\end{document}

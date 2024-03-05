@@ -1,0 +1,4 @@
+*
+!.gitignore
+!dokument/
+!dokument/*.tex
